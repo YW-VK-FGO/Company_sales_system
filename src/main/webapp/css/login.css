@@ -1,0 +1,46 @@
+#control{
+    /*vertical-align:middle;*/
+    position: absolute;
+    top:30%;
+    left: 20%;
+}
+#login{
+    /*text-align: center;*/
+    background-image: url("../resource/login/login_form.jpg");
+    background-size: cover;
+    width: 250px;
+    height:200px;
+}
+#labelName{
+
+}
+h4{
+    color: blue;
+    font-size: 20px;
+    margin-bottom: 15px;
+    margin-left: 0px;
+    margin-top: 10px;
+}
+#labelPassword{
+/*padding-bottom: 10px;*/
+}
+#password{
+margin-bottom: 20px;
+}
+#userName{
+
+}
+.input{
+    transition: width 3s ease-in-out;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+body{
+    background: url("../resource/login/login_bg.jpg") no-repeat;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+.input:focus {
+    width: 200px;
+}
