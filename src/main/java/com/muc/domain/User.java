@@ -7,7 +7,7 @@ public class User {
     private String email;       //邮箱
     private String userName;    //姓名
     private String password;    //密码
-    private Long state;         //状态
+    private String state;         //状态
     private String gender;      //性别
     private String telephone;   //电话
     private Date birthday;      //出生年月
@@ -62,11 +62,11 @@ public class User {
         this.password = password;
     }
 
-    public Long getState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(Long state) {
+    public void setState(String state) {
         this.state = state;
     }
 

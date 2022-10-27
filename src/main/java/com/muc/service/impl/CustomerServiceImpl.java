@@ -159,9 +159,9 @@ public class CustomerServiceImpl implements CustomerService {
         try{
             //1. 获取SqlSession对象
             sqlSession = MapperFactory.getSqlSession();
+//            System.out.println("findAll操作");
             //2. 获取Dao
             CustomerDao customerDao = MapperFactory.getMapper(sqlSession,CustomerDao.class);
-
             //3. 调用Dao层操作
             return customerDao.findAll();
 

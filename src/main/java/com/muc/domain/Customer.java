@@ -10,9 +10,9 @@ public class Customer {
     private String id;//主键
     private String name;//姓名
     private String phoneNumber;//手机号
-    private String sex;//性别
+    private String gender;//性别
     private String idCard;//身份证号
-    private String memberPicture;//客户照片
+    private String customerPicture;//客户照片
     private String email;//邮箱
     private Date regTime;//添加时间
     private String address;//常住地址
@@ -23,13 +23,13 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "member{" +
+        return "customer{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", sex='" + sex + '\'' +
+                ", gender='" + gender + '\'' +
                 ", idCard='" + idCard + '\'' +
-                ", memberPicture='" + memberPicture + '\'' +
+                ", customerPicture='" + customerPicture + '\'' +
                 ", email='" + email + '\'' +
                 ", regTime=" + regTime +
                 ", address='" + address + '\'' +
@@ -62,12 +62,12 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getSex() {
-        return sex;
+    public String getGender() {
+        return gender;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getIdCard() {
@@ -78,12 +78,12 @@ public class Customer {
         this.idCard = idCard;
     }
 
-    public String getMemberPicture() {
-        return memberPicture;
+    public String getCustomerPicture() {
+        return customerPicture;
     }
 
-    public void setMemberPicture(String memberPicture) {
-        this.memberPicture = memberPicture;
+    public void setCustomerPicture(String customerPicture) {
+        this.customerPicture = customerPicture;
     }
 
     public String getEmail() {
