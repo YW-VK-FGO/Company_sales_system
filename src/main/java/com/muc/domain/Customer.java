@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public class Customer {
 
-    private Integer id;//主键
+    private String id;//主键
     private String name;//姓名
     private String phoneNumber;//手机号
     private String sex;//性别
@@ -38,11 +38,11 @@ public class Customer {
                 '}';
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
