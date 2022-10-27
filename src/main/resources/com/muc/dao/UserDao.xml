@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.muc.dao.UserDao">
+    <!--配置实体类属性和数据库表中列的对应关系-->
+    <resultMap id="BaseResultMap" type="com.muc.domain.User">
+        <id column="user_id" jdbcType="VARCHAR" property="id"/>
+        <result column="user_email" jdbcType="VARCHAR" property="email"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="user_password" jdbcType="VARCHAR" property="password"/>
+        <result column="state" jdbcType="VARCHAR" property="state"/>
+        <result column="gender" jdbcType="VARCHAR" property="gender"/>
+        <result column="user_telephone" jdbcType="VARCHAR" property="telephone"/>
+        <result column="user_birthday" jdbcType="VARCHAR" property="birthday"/>
+        <result column="join_date" jdbcType="DATE" property="joinDate"/>
+    </resultMap>
+
+    <!--9-->
+    <!--配置查询的列名公共SQL语句-->
+    <sql id="Base_Column_List">
+        user_id, user_email, user_name,  user_password, state, gender, user_telephone, user_birthday, join_date
+    </sql>
+
+    <!--配置查询所有，带条件-->
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sms_user
+
+    </select>
+
+    <!--配置根据ID查询-->
+    <select id="findById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sms_user
+        where user_id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <!--配置根据id删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from sms_user where user_id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+
+    <select id="findByNameAndPwd" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sms_user
+        where user_name = #{name,jdbcType=VARCHAR} and user_password = #{password,jdbcType=VARCHAR}
+    </select>
+
+    <!--！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！-->
+    <!--还没修改完全-->
+<!--
+    &lt;!&ndash;配置全字段插入，当某个字段没有值时，插入null&ndash;&gt;
+    <insert id="save" parameterType="com.muc.domain.system.User">
+        insert into sms_user (user_id, email, user_name,  password, state,
+        gender, telephone, birthday, join_date, dept_id
+        )
+        values (#{id,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR},
+        #{password,jdbcType=VARCHAR}, #{state,jdbcType=DECIMAL}, #{gender,jdbcType=CHAR},
+        #{telephone,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, #{joinDate,jdbcType=VARCHAR},
+        #{deptId,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    &lt;!&ndash;配置全字段更新，当提供的数据为null时，数据库数据会被更新为null&ndash;&gt;
+    &lt;!&ndash;对于不参与修改的字段，可以在字面上不收集相关字段 &ndash;&gt;
+    <update id="update" parameterType="com.muc.domain.system.User">
+        update sms_user
+        set user_name = #{userName,jdbcType=VARCHAR},
+        state = #{state,jdbcType=DECIMAL},
+        gender = #{gender,jdbcType=CHAR},
+        telephone = #{telephone,jdbcType=VARCHAR},
+        dept_id = #{deptId,jdbcType=VARCHAR}
+        where user_id = #{id,jdbcType=VARCHAR}
+    </update>
+-->
+
+</mapper>

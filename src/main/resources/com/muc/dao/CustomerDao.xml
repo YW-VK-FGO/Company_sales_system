@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.muc.dao.CustomerDao">
+
+    <!--配置实体类属性和数据库表中列的对应关系-->
+    <resultMap id="BaseResultMap" type="com.muc.domain.Customer">
+        <id column="customer_id" jdbcType="VARCHAR" property="id"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="name"/>
+        <result column="customer_telephone" jdbcType="VARCHAR" property="phoneNumber"/>
+        <result column="customer_gender" jdbcType="VARCHAR" property="gender"/>
+        <result column="customer_idCard" jdbcType="VARCHAR" property="idCard"/>
+        <result column="customer_picture" jdbcType="VARCHAR" property="customerPicture"/>
+        <result column="customer_email" jdbcType="VARCHAR" property="email"/>
+        <result column="reg_time" jdbcType="DATE" property="regTime"/>
+        <result column="customer_address" jdbcType="VARCHAR" property="address"/>
+        <result column="user_id" jdbcType="VARCHAR" property="salesmanId"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"></result>
+    </resultMap>
+
+    <!--配置查询的列名公共SQL语句-->
+    <sql id="Base_Column_List">
+        customer_id, customer_name, customer_telephone, customer_gender, customer_idCard, customer_picture, customer_email, reg_time, customer_address, user_id, remark
+    </sql>
+
+    <!--配置查询所有，带条件-->
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from customer
+    </select>
+
+
+    <!--配置根据id删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from customer where customer_id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <!--配置全字段插入，当某个字段没有值时，插入null-->
+    <insert id="save" parameterType="com.muc.domain.User">
+        insert into customer (customer_id, customer_name, customer_telephone, customer_gender, customer_idCrad,
+                             customer_picture, customer_email,reg_time,customer_address,user_id,remark
+        )
+        values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR},
+                #{gender,jdbcType=VARCHAR}, #{idCard,jdbcType=VARCHAR}, #{customerPicture,jdbcType=CHAR},
+                #{email,jdbcType=VARCHAR}, #{regTime,jdbcType=DATE}, #{address,jdbcType=VARCHAR},
+                #{salesmanId,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR}
+               )
+    </insert>
+
+    <!--配置全字段更新，当提供的数据为null时，数据库数据会被更新为null-->
+    <!--对于不参与修改的字段，可以在字面上不收集相关字段 -->
+    <!--同时对于某些字段需要在前端做出限制-->
+    <update id="update" parameterType="com.muc.domain.Customer">
+        update customer
+        set customer_name=#{name,jdbcType=VARCHAR},
+            customer_telephone=#{phoneNumber,jdbcType=VARCHAR},
+            customer_gender = #{gender,jdbcType=VARCHAR},
+            customer_idCard = #{idCard,jdbcType=VARCHAR},
+            customer_picture = #{customerPicture,jdbcType=VARCHAR},
+            customer_email = #{email,jdbcType=VARCHAR},
+            reg_time = #{regTime,jdbcType=DATE},
+            customer_address = #{address,jdbcType=VARCHAR},
+            remark = #{remark,jdbcType=VARCHAR}
+        where customer_id = #{id,jdbcType=VARCHAR}
+    </update>
+
+
+    <!--更改客户负责人员-->
+    <update id="updateUserId" parameterType="com.muc.domain.User">
+        update customer
+        set user_id = #{salesmanId,jdbcType=VARCHAR}
+        where customer_id = #{id,jdbcType=VARCHAR}
+    </update>
+
+
+</mapper>

@@ -1,0 +1,24 @@
+   customer_id          varchar(20) not null,
+   customer_name        varchar(30),
+   customer_telephone   varchar(25),
+   customer_gender      varchar(8),
+   customer_idCard      varchar(30),
+   customer_picture     varchar(30),
+   customer_email       varchar(30),
+   reg_time             date,
+   customer_address     varchar(40),
+   user_id              varchar(20),
+   remark               varchar(60),
+   primary key (customer_id)
+
+           <id column="customer_id" jdbcType="VARCHAR" property="id"/>
+           <result column="customer_name" jdbcType="VARCHAR" property="name"/>
+           <result column="customer_telephone" jdbcType="VARCHAR" property="phoneNumber"/>
+           <result column="customer_gender" jdbcType="VARCHAR" property="gender"/>
+           <result column="customer_idCard" jdbcType="TIMESTAMP" property="idCard"/>
+           <result column="customer_picture" jdbcType="VARCHAR" property="customerPicture"/>
+           <result column="customer_email" jdbcType="VARCHAR" property="email"/>
+           <result column="reg_time" jdbcType="DATE" property="regTime"/>
+           <result column="customer_address" jdbcType="VARCHAR" property="address"/>
+           <result column="user_id" jdbcType="VARCHAR" property="salesmanId"/>
+           <result column="remark" jdbcType="VARCHAR" property="remark"></result>
